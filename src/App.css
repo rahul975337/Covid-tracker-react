@@ -4,13 +4,27 @@
 body {
   background-color: #f5f6fa;
 }
+.app {
+  display: flex;
+  justify-content: space-evenly;
+}
 .app__header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
   align-items: center;
   margin: 20px;
 }
 .app__stats {
   display: flex;
   justify-content: space-between;
+}
+.app__left {
+  flex: 0.9;
+}
+
+@media (max-width: 660px) {
+  .app {
+    flex-direction: column;
+  }
 }
