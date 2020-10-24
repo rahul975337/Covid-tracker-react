@@ -2,6 +2,8 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 
 import { FormControl, Select, MenuItem } from "@material-ui/core";
+import InfoBox from "./InfoBox";
+import Map from "./Map";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -32,7 +34,7 @@ function App() {
   return (
     <div className="App">
       {/* H E A D E R */}
-      <div className="app_header">
+      <div className="app__header">
         {/* T I T L E  */}
         <h1>Covid-19 Tracker</h1>
         {/* S E L E C T    D R O P DO W N */}
@@ -47,15 +49,19 @@ function App() {
         </FormControl>
       </div>
 
-      <div className="app_stats">
+      <div className="app__stats">
         {/* I N F O B O X E S  title='Coronavirus cases'*/}
+        <InfoBox title="Cases" total="2000" cases="123" />
         {/* I N F O B O X E S title='Coronavirus recoveries'*/}
+        <InfoBox title="Recovered" total="2000" cases="123" />
         {/* I N F O B O X E S title='Coronavirus deaths'*/}
+        <InfoBox title="Deaths" total="2000" cases="123" />
       </div>
 
       {/* T A B L E */}
       {/* G R A P H */}
       {/* M A P */}
+      <Map/>
     </div>
   );
 }
