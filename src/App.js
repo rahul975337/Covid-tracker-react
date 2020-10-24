@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-
 import {
   FormControl,
   Select,
@@ -11,15 +10,17 @@ import {
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
-
 import { sortData } from "./util.js";
 import LineGraph from "./LineGraph";
-
+import "leaflet/dist/leaflet.css";
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
   // STATE = How to write a variable in REACT <<<<<
   //  https://disease.sh/v3/covid-19/countries
   // USEEFFECT = Runs a piece of code based on a given condition
@@ -64,13 +65,14 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCountry(countryCode);
+        setMapCountries(data);
         // All of the data...... from the country response
         setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
       });
   };
-  console.log("====================================");
-  console.log(countryInfo);
-  console.log("====================================");
+
   return (
     <div className="app">
       <div className="app__left">
@@ -114,7 +116,7 @@ function App() {
           />
         </div>
         {/* M A P */}
-        <Map />
+        <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
       </div>
       <Card className="app__right">
         <CardContent>
