@@ -29,6 +29,25 @@ body {
 .app__left {
   flex: 0.9;
 }
+/* //TODO: */
+.app__right {
+  display: flex;
+  flex-direction: column;
+}
+/* TODO: */
+.app__right .MuiCardContent-root {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+/* TODO: */
+.app__graph {
+  flex-grow: 1;
+}
+.app__graphTitle {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 @media (max-width: 660px) {
   .app {
